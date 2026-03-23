@@ -1,122 +1,737 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SyonCo</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SyonCo | Consultoría en Marketing e IA</title>
+  <meta
+    name="description"
+    content="SyonCo ayuda a empresas y profesionales a crecer con estrategia, marketing e inteligencia artificial."
+  />
+  <style>
+    :root{
+      --bg:#f3f2ef;
+      --surface:#fbfbf9;
+      --surface-2:#f7f7f4;
+      --text:#111111;
+      --muted:#666666;
+      --line:#dfdfd8;
+      --black:#0e0e0e;
+      --white:#ffffff;
+      --max:1200px;
+      --radius:24px;
+      --shadow:0 10px 30px rgba(0,0,0,.05);
+    }
 
-<style>
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #ffffff;
-    color: #111;
-}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
 
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 40px 20px;
-}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
 
-.hero {
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+    .container{
+      width:min(var(--max), calc(100% - 40px));
+      margin:0 auto;
+    }
 
-h1 {
-    font-size: 64px;
-    margin: 0;
-    letter-spacing: -1px;
-}
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(14px);
+      background:rgba(243,242,239,.85);
+      border-bottom:1px solid rgba(17,17,17,.06);
+    }
 
-h2 {
-    font-weight: 400;
-    color: #555;
-    max-width: 600px;
-}
+    .nav{
+      min-height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
 
-.btn {
-    margin-top: 30px;
-    display: inline-block;
-    padding: 14px 28px;
-    background: #111;
-    color: white;
-    border-radius: 30px;
-    text-decoration: none;
-}
+    .brand{
+      font-size:30px;
+      font-weight:600;
+      letter-spacing:-0.04em;
+    }
 
-.section {
-    padding: 80px 0;
-    border-top: 1px solid #eee;
-}
+    .nav-links{
+      display:flex;
+      gap:28px;
+      align-items:center;
+      color:var(--muted);
+      font-size:15px;
+    }
 
-.cards {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 30px;
-}
+    .nav-links a:hover{color:var(--text)}
 
-.card {
-    flex: 1;
-    min-width: 250px;
-    background: #f7f7f7;
-    padding: 25px;
-    border-radius: 15px;
-}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:15px 22px;
+      border-radius:999px;
+      font-size:15px;
+      font-weight:600;
+      transition:.25s ease;
+      border:1px solid transparent;
+      cursor:pointer;
+      white-space:nowrap;
+    }
 
-.footer {
-    padding: 40px;
-    text-align: center;
-    border-top: 1px solid #eee;
-    color: #777;
-}
-</style>
+    .btn-primary{
+      background:var(--black);
+      color:var(--white);
+      box-shadow:0 8px 20px rgba(0,0,0,.10);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-1px);
+      background:#191919;
+    }
+
+    .btn-secondary{
+      background:transparent;
+      border-color:var(--line);
+      color:var(--text);
+    }
+
+    .btn-secondary:hover{
+      background:rgba(255,255,255,.55);
+    }
+
+    .hero{
+      padding:56px 0 34px;
+    }
+
+    .hero-shell{
+      background:linear-gradient(180deg, rgba(255,255,255,.78) 0%, rgba(247,247,244,.95) 100%);
+      border:1px solid rgba(17,17,17,.06);
+      border-radius:32px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:0;
+      min-height:680px;
+    }
+
+    .hero-left{
+      padding:72px 56px 56px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(17,17,17,.04);
+      border:1px solid rgba(17,17,17,.06);
+      color:#595959;
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      width:max-content;
+      margin-bottom:24px;
+    }
+
+    .hero h1{
+      margin:0;
+      font-size:clamp(48px, 8vw, 92px);
+      line-height:.95;
+      letter-spacing:-.055em;
+      max-width:760px;
+    }
+
+    .hero-copy{
+      margin-top:24px;
+      max-width:650px;
+      font-size:20px;
+      line-height:1.5;
+      color:var(--muted);
+    }
+
+    .hero-actions{
+      margin-top:34px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+
+    .hero-bottom{
+      margin-top:48px;
+      padding-top:28px;
+      border-top:1px solid rgba(17,17,17,.08);
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .mini-stat strong{
+      display:block;
+      font-size:15px;
+      margin-bottom:6px;
+    }
+
+    .mini-stat span{
+      display:block;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.45;
+    }
+
+    .hero-right{
+      position:relative;
+      padding:34px;
+      background:
+        radial-gradient(circle at top right, rgba(0,0,0,.05), transparent 32%),
+        radial-gradient(circle at bottom left, rgba(0,0,0,.04), transparent 28%),
+        #f7f7f4;
+      border-left:1px solid rgba(17,17,17,.06);
+      display:flex;
+      align-items:stretch;
+    }
+
+    .showcase{
+      width:100%;
+      border-radius:28px;
+      background:#111;
+      color:#fff;
+      padding:30px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      min-height:100%;
+      box-shadow:0 18px 40px rgba(0,0,0,.15);
+    }
+
+    .showcase-top{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      align-items:flex-start;
+    }
+
+    .showcase-label{
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.65);
+      margin-bottom:10px;
+    }
+
+    .showcase h2{
+      margin:0;
+      font-size:34px;
+      line-height:1.05;
+      letter-spacing:-.04em;
+      max-width:380px;
+    }
+
+    .badge{
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      color:#fff;
+      font-size:13px;
+      border:1px solid rgba(255,255,255,.1);
+      white-space:nowrap;
+    }
+
+    .showcase-list{
+      margin:34px 0 0;
+      display:grid;
+      gap:14px;
+    }
+
+    .showcase-item{
+      padding:18px 18px 18px 20px;
+      border-radius:18px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .showcase-item strong{
+      display:block;
+      margin-bottom:6px;
+      font-size:16px;
+    }
+
+    .showcase-item span{
+      display:block;
+      color:rgba(255,255,255,.72);
+      font-size:14px;
+      line-height:1.45;
+    }
+
+    .section{
+      padding:92px 0;
+    }
+
+    .section-head{
+      max-width:780px;
+      margin-bottom:34px;
+    }
+
+    .section-kicker{
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:14px;
+    }
+
+    .section-head h2{
+      margin:0 0 14px;
+      font-size:clamp(34px, 5vw, 56px);
+      line-height:1.02;
+      letter-spacing:-.045em;
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.55;
+    }
+
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .card{
+      background:var(--surface);
+      border:1px solid rgba(17,17,17,.06);
+      border-radius:24px;
+      padding:28px;
+      box-shadow:0 8px 24px rgba(0,0,0,.03);
+    }
+
+    .card-index{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#111;
+      color:#fff;
+      font-size:14px;
+      font-weight:700;
+      margin-bottom:18px;
+    }
+
+    .card h3{
+      margin:0 0 10px;
+      font-size:24px;
+      letter-spacing:-.03em;
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.6;
+    }
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+    }
+
+    .about-box{
+      background:var(--surface);
+      border:1px solid rgba(17,17,17,.06);
+      border-radius:28px;
+      padding:34px;
+    }
+
+    .about-box.large{
+      min-height:320px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .about-box p{
+      margin:0;
+      font-size:17px;
+      line-height:1.65;
+      color:var(--muted);
+    }
+
+    .quote{
+      font-size:34px;
+      line-height:1.08;
+      letter-spacing:-.04em;
+      max-width:500px;
+      margin:0 0 22px;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+      margin-top:22px;
+    }
+
+    .cta{
+      padding:0 0 92px;
+    }
+
+    .cta-box{
+      border-radius:34px;
+      padding:48px;
+      background:#111;
+      color:#fff;
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:24px;
+      align-items:center;
+      box-shadow:0 18px 40px rgba(0,0,0,.14);
+    }
+
+    .cta-box h2{
+      margin:0 0 14px;
+      font-size:clamp(34px, 5vw, 58px);
+      line-height:1;
+      letter-spacing:-.045em;
+    }
+
+    .cta-box p{
+      margin:0;
+      color:rgba(255,255,255,.72);
+      font-size:18px;
+      line-height:1.6;
+      max-width:620px;
+    }
+
+    .cta-actions{
+      display:flex;
+      justify-content:flex-end;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .cta .btn-secondary{
+      color:#fff;
+      border-color:rgba(255,255,255,.16);
+    }
+
+    .cta .btn-secondary:hover{
+      background:rgba(255,255,255,.08);
+    }
+
+    .footer{
+      padding:28px 0 46px;
+      border-top:1px solid rgba(17,17,17,.06);
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .footer-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .footer-links{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .footer-links a:hover{color:var(--text)}
+
+    @media (max-width: 1080px){
+      .hero-grid,
+      .services-grid,
+      .about-grid,
+      .split,
+      .cta-box{
+        grid-template-columns:1fr;
+      }
+
+      .hero-right{
+        border-left:0;
+        border-top:1px solid rgba(17,17,17,.06);
+      }
+
+      .cta-actions{
+        justify-content:flex-start;
+      }
+    }
+
+    @media (max-width: 760px){
+      .container{
+        width:min(var(--max), calc(100% - 24px));
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+      .hero-left,
+      .hero-right,
+      .card,
+      .about-box,
+      .cta-box{
+        padding:24px;
+      }
+
+      .hero{
+        padding-top:28px;
+      }
+
+      .hero-copy{
+        font-size:17px;
+      }
+
+      .hero-bottom{
+        grid-template-columns:1fr;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .hero-actions,
+      .cta-actions{
+        flex-direction:column;
+      }
+
+      .section{
+        padding:72px 0;
+      }
+    }
+  </style>
 </head>
-
 <body id="top">
-
-<div class="container hero">
-    <h1>SyonCo</h1>
-    <h2>Consultoría en Marketing e Inteligencia Artificial para hacer crecer negocios de forma estratégica</h2>
-
-    <a class="btn" href="https://www.linkedin.com/in/fernando-cevallos-vega-38296419a/" target="_blank">
-        Contactar
-    </a>
-</div>
-
-<div class="container section">
-    <h2>Qué hago</h2>
-
-    <div class="cards">
-        <div class="card">
-            <h3>Marketing estratégico</h3>
-            <p>Te ayudo a estructurar tu negocio para atraer mejores clientes y vender más.</p>
-        </div>
-
-        <div class="card">
-            <h3>Automatización con IA</h3>
-            <p>Implemento sistemas que ahorran tiempo y mejoran la eficiencia.</p>
-        </div>
-
-        <div class="card">
-            <h3>Escalado de negocio</h3>
-            <p>Diseñamos procesos para crecer sin depender de tu tiempo.</p>
-        </div>
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#top" class="brand">SyonCo</a>
+      <nav class="nav-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
     </div>
-</div>
+  </header>
 
-<div class="container section">
-    <h2>Sobre mí</h2>
-    <p>Soy consultor en marketing e inteligencia artificial, enfocado en ayudar a negocios a crecer con sistemas claros, eficientes y orientados a resultados.</p>
-</div>
+  <main>
+    <section class="hero">
+      <div class="container hero-shell">
+        <div class="hero-grid">
+          <div class="hero-left">
+            <div>
+              <div class="eyebrow">Consultoría en marketing e inteligencia artificial</div>
+              <h1>Impulso negocios con estrategia, sistemas y ejecución inteligente.</h1>
+              <p class="hero-copy">
+                Ayudo a empresas y profesionales a mejorar su posicionamiento, optimizar procesos
+                y aplicar inteligencia artificial con un enfoque serio, práctico y orientado a negocio.
+              </p>
 
-<div class="footer">
-    © 2026 SyonCo
-</div>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="https://www.linkedin.com/in/fernando-cevallos-vega-38296419a/" target="_blank" rel="noopener noreferrer">
+                  Contactar por LinkedIn
+                </a>
+                <a class="btn btn-secondary" href="#servicios">
+                  Ver servicios
+                </a>
+              </div>
+            </div>
 
+            <div class="hero-bottom">
+              <div class="mini-stat">
+                <strong>Estrategia clara</strong>
+                <span>Mensajes, enfoque y dirección para crecer con más coherencia.</span>
+              </div>
+              <div class="mini-stat">
+                <strong>Automatización útil</strong>
+                <span>Menos fricción operativa y más tiempo para lo importante.</span>
+              </div>
+              <div class="mini-stat">
+                <strong>Visión de negocio</strong>
+                <span>La tecnología solo tiene sentido cuando genera impacto real.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="showcase">
+              <div>
+                <div class="showcase-top">
+                  <div>
+                    <div class="showcase-label">SyonCo</div>
+                    <h2>Marketing, inteligencia artificial y estructura de crecimiento.</h2>
+                  </div>
+                  <div class="badge">Consultoría</div>
+                </div>
+
+                <div class="showcase-list">
+                  <div class="showcase-item">
+                    <strong>Captación y posicionamiento</strong>
+                    <span>Definición de propuesta, comunicación y enfoque comercial más sólido.</span>
+                  </div>
+                  <div class="showcase-item">
+                    <strong>Procesos y automatización</strong>
+                    <span>Diseño de sistemas para ahorrar tiempo, ordenar operaciones y escalar mejor.</span>
+                  </div>
+                  <div class="showcase-item">
+                    <strong>IA aplicada con criterio</strong>
+                    <span>Implementación realista, útil y alineada con objetivos concretos de negocio.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="servicios">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Servicios</div>
+          <h2>Una consultoría diseñada para aportar claridad, eficiencia y crecimiento.</h2>
+          <p>
+            Trabajo sobre lo que realmente mueve un negocio: estrategia, procesos, posicionamiento
+            y oportunidades reales de mejora apoyadas en marketing e inteligencia artificial.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="card">
+            <div class="card-index">01</div>
+            <h3>Estrategia de marketing</h3>
+            <p>
+              Estructuro mensajes, propuesta de valor y presencia digital para comunicar mejor,
+              atraer mejores oportunidades y convertir con mayor claridad.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-index">02</div>
+            <h3>Automatización con IA</h3>
+            <p>
+              Detecto procesos repetitivos y planteo sistemas que reduzcan tiempo operativo,
+              mejoren la eficiencia y eleven la calidad de ejecución.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-index">03</div>
+            <h3>Optimización y escalado</h3>
+            <p>
+              Analizo puntos de fricción, estructura y oportunidades de mejora para ayudarte
+              a crecer sobre una base más sólida, ordenada y preparada para escalar.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sobre-mi">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Sobre mí</div>
+          <h2>Una visión práctica para integrar marketing e IA en negocio real.</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-box large">
+            <p class="quote">
+              No se trata solo de usar inteligencia artificial. Se trata de aplicarla con criterio.
+            </p>
+            <p>
+              Soy Fernando Cevallos y trabajo en la intersección entre estrategia, marketing e
+              inteligencia artificial. Mi enfoque está orientado a ayudar a empresas y profesionales
+              a identificar oportunidades, simplificar procesos y construir sistemas útiles que
+              generen resultados.
+            </p>
+          </div>
+
+          <div>
+            <div class="about-box">
+              <p>
+                La tecnología por sí sola no resuelve nada. Aporta valor cuando está alineada con
+                una estrategia clara, una ejecución consistente y un objetivo de negocio concreto.
+              </p>
+            </div>
+
+            <div class="split">
+              <div class="about-box">
+                <p>
+                  Enfoque consultivo, sobrio y orientado a decisiones útiles.
+                </p>
+              </div>
+              <div class="about-box">
+                <p>
+                  Soluciones pensadas para negocio real, no para apariencia.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contacto">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <h2>¿Hablamos?</h2>
+            <p>
+              Si quieres explorar cómo aplicar marketing e inteligencia artificial en tu negocio
+              de una forma seria, útil y profesional, podemos conectar.
+            </p>
+          </div>
+
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="https://www.linkedin.com/in/fernando-cevallos-vega-38296419a/" target="_blank" rel="noopener noreferrer">
+              Ir a LinkedIn
+            </a>
+            <a class="btn btn-secondary" href="#top">
+              Volver arriba
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-row">
+      <div>© 2026 SyonCo. Todos los derechos reservados.</div>
+      <div class="footer-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
