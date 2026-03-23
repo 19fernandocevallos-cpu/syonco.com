@@ -6,21 +6,23 @@
   <title>SyonCo | Consultoría en Marketing e IA</title>
   <meta
     name="description"
-    content="SyonCo ayuda a empresas y profesionales a crecer con estrategia, marketing e inteligencia artificial."
+    content="SyonCo ayuda a empresas y profesionales a crecer mediante estrategia, marketing e inteligencia artificial aplicada al negocio."
   />
   <style>
     :root{
-      --bg:#f3f2ef;
-      --surface:#fbfbf9;
-      --surface-2:#f7f7f4;
-      --text:#111111;
-      --muted:#666666;
-      --line:#dfdfd8;
-      --black:#0e0e0e;
+      --bg:#070707;
+      --bg-soft:#0f0f10;
+      --panel:#121214;
+      --panel-2:#17181b;
+      --line:rgba(255,255,255,.08);
+      --line-strong:rgba(255,255,255,.14);
+      --text:#f5f5f3;
+      --muted:#a1a1aa;
+      --muted-2:#c8c8cf;
       --white:#ffffff;
-      --max:1200px;
-      --radius:24px;
-      --shadow:0 10px 30px rgba(0,0,0,.05);
+      --shadow:0 20px 60px rgba(0,0,0,.45);
+      --radius:28px;
+      --max:1220px;
     }
 
     *{box-sizing:border-box}
@@ -28,15 +30,17 @@
     body{
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-      background:var(--bg);
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,255,255,.05), transparent 24%),
+        radial-gradient(circle at 85% 10%, rgba(255,255,255,.04), transparent 20%),
+        radial-gradient(circle at 80% 80%, rgba(255,255,255,.03), transparent 20%),
+        linear-gradient(180deg, #080808 0%, #050505 100%);
       color:var(--text);
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
     }
 
-    a{text-decoration:none;color:inherit}
-    img{max-width:100%;display:block}
-
+    a{color:inherit;text-decoration:none}
     .container{
       width:min(var(--max), calc(100% - 40px));
       margin:0 auto;
@@ -47,8 +51,8 @@
       top:0;
       z-index:50;
       backdrop-filter:blur(14px);
-      background:rgba(243,242,239,.85);
-      border-bottom:1px solid rgba(17,17,17,.06);
+      background:rgba(7,7,7,.72);
+      border-bottom:1px solid rgba(255,255,255,.06);
     }
 
     .nav{
@@ -62,7 +66,8 @@
     .brand{
       font-size:30px;
       font-weight:600;
-      letter-spacing:-0.04em;
+      letter-spacing:-.045em;
+      color:var(--white);
     }
 
     .nav-links{
@@ -73,65 +78,43 @@
       font-size:15px;
     }
 
-    .nav-links a:hover{color:var(--text)}
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:15px 22px;
-      border-radius:999px;
-      font-size:15px;
-      font-weight:600;
-      transition:.25s ease;
-      border:1px solid transparent;
-      cursor:pointer;
-      white-space:nowrap;
-    }
-
-    .btn-primary{
-      background:var(--black);
-      color:var(--white);
-      box-shadow:0 8px 20px rgba(0,0,0,.10);
-    }
-
-    .btn-primary:hover{
-      transform:translateY(-1px);
-      background:#191919;
-    }
-
-    .btn-secondary{
-      background:transparent;
-      border-color:var(--line);
-      color:var(--text);
-    }
-
-    .btn-secondary:hover{
-      background:rgba(255,255,255,.55);
-    }
+    .nav-links a:hover{color:var(--white)}
 
     .hero{
-      padding:56px 0 34px;
+      padding:42px 0 28px;
     }
 
     .hero-shell{
-      background:linear-gradient(180deg, rgba(255,255,255,.78) 0%, rgba(247,247,244,.95) 100%);
-      border:1px solid rgba(17,17,17,.06);
-      border-radius:32px;
-      box-shadow:var(--shadow);
+      position:relative;
       overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:34px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
+        linear-gradient(180deg, #101113 0%, #0a0a0b 100%);
+      box-shadow:var(--shadow);
+    }
+
+    .hero-shell::before{
+      content:"";
+      position:absolute;
+      inset:auto -10% -30% auto;
+      width:440px;
+      height:440px;
+      background:radial-gradient(circle, rgba(255,255,255,.08), transparent 60%);
+      filter:blur(30px);
+      pointer-events:none;
     }
 
     .hero-grid{
+      position:relative;
       display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:0;
-      min-height:680px;
+      grid-template-columns:1.15fr .85fr;
+      min-height:720px;
     }
 
     .hero-left{
-      padding:72px 56px 56px;
+      padding:72px 58px 56px;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
@@ -141,32 +124,33 @@
       display:inline-flex;
       align-items:center;
       gap:10px;
+      width:max-content;
       padding:10px 14px;
       border-radius:999px;
-      background:rgba(17,17,17,.04);
-      border:1px solid rgba(17,17,17,.06);
-      color:#595959;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      color:var(--muted-2);
       font-size:12px;
-      letter-spacing:.12em;
       text-transform:uppercase;
-      width:max-content;
-      margin-bottom:24px;
+      letter-spacing:.13em;
+      margin-bottom:26px;
     }
 
-    .hero h1{
+    h1{
       margin:0;
-      font-size:clamp(48px, 8vw, 92px);
-      line-height:.95;
-      letter-spacing:-.055em;
-      max-width:760px;
+      font-size:clamp(52px, 8vw, 96px);
+      line-height:.93;
+      letter-spacing:-.06em;
+      max-width:800px;
+      color:var(--white);
     }
 
     .hero-copy{
-      margin-top:24px;
-      max-width:650px;
+      margin-top:26px;
+      max-width:720px;
       font-size:20px;
-      line-height:1.5;
-      color:var(--muted);
+      line-height:1.55;
+      color:var(--muted-2);
     }
 
     .hero-actions{
@@ -176,36 +160,86 @@
       gap:14px;
     }
 
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height:54px;
+      padding:0 22px;
+      border-radius:999px;
+      font-size:15px;
+      font-weight:600;
+      transition:.25s ease;
+      border:1px solid transparent;
+      white-space:nowrap;
+    }
+
+    .btn-primary{
+      background:var(--white);
+      color:#0b0b0c;
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-1px);
+      background:#ededed;
+    }
+
+    .btn-secondary{
+      background:transparent;
+      color:var(--white);
+      border-color:var(--line-strong);
+    }
+
+    .btn-secondary:hover{
+      background:rgba(255,255,255,.06);
+      transform:translateY(-1px);
+    }
+
+    .hero-subnote{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.6;
+      max-width:760px;
+    }
+
     .hero-bottom{
-      margin-top:48px;
-      padding-top:28px;
-      border-top:1px solid rgba(17,17,17,.08);
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:18px;
+      gap:16px;
+      margin-top:42px;
+      padding-top:28px;
+      border-top:1px solid rgba(255,255,255,.08);
     }
 
-    .mini-stat strong{
+    .mini-card{
+      padding:18px 18px 16px;
+      border-radius:20px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.06);
+    }
+
+    .mini-card strong{
       display:block;
+      margin-bottom:8px;
       font-size:15px;
-      margin-bottom:6px;
+      color:var(--white);
     }
 
-    .mini-stat span{
+    .mini-card span{
       display:block;
       color:var(--muted);
       font-size:14px;
-      line-height:1.45;
+      line-height:1.5;
     }
 
     .hero-right{
-      position:relative;
-      padding:34px;
+      padding:28px;
+      border-left:1px solid rgba(255,255,255,.06);
       background:
-        radial-gradient(circle at top right, rgba(0,0,0,.05), transparent 32%),
-        radial-gradient(circle at bottom left, rgba(0,0,0,.04), transparent 28%),
-        #f7f7f4;
-      border-left:1px solid rgba(17,17,17,.06);
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,.08), transparent 25%),
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
       display:flex;
       align-items:stretch;
     }
@@ -213,73 +247,98 @@
     .showcase{
       width:100%;
       border-radius:28px;
-      background:#111;
-      color:#fff;
-      padding:30px;
+      padding:28px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
+        #101114;
+      border:1px solid rgba(255,255,255,.08);
       display:flex;
       flex-direction:column;
       justify-content:space-between;
-      min-height:100%;
-      box-shadow:0 18px 40px rgba(0,0,0,.15);
+      box-shadow:0 18px 40px rgba(0,0,0,.28);
     }
 
     .showcase-top{
       display:flex;
       justify-content:space-between;
-      gap:16px;
+      gap:14px;
       align-items:flex-start;
     }
 
     .showcase-label{
       font-size:12px;
-      letter-spacing:.12em;
       text-transform:uppercase;
-      color:rgba(255,255,255,.65);
+      letter-spacing:.14em;
+      color:var(--muted);
       margin-bottom:10px;
     }
 
     .showcase h2{
       margin:0;
-      font-size:34px;
-      line-height:1.05;
-      letter-spacing:-.04em;
-      max-width:380px;
+      font-size:36px;
+      line-height:1.04;
+      letter-spacing:-.045em;
+      max-width:420px;
     }
 
     .badge{
       padding:10px 14px;
       border-radius:999px;
-      background:rgba(255,255,255,.08);
-      color:#fff;
-      font-size:13px;
       border:1px solid rgba(255,255,255,.1);
+      background:rgba(255,255,255,.05);
+      color:var(--white);
+      font-size:13px;
       white-space:nowrap;
     }
 
-    .showcase-list{
-      margin:34px 0 0;
-      display:grid;
-      gap:14px;
-    }
-
-    .showcase-item{
-      padding:18px 18px 18px 20px;
-      border-radius:18px;
-      background:rgba(255,255,255,.06);
+    .audit-box{
+      margin-top:28px;
+      padding:22px;
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       border:1px solid rgba(255,255,255,.08);
     }
 
-    .showcase-item strong{
-      display:block;
-      margin-bottom:6px;
-      font-size:16px;
+    .audit-box h3{
+      margin:0 0 12px;
+      font-size:24px;
+      line-height:1.1;
+      letter-spacing:-.03em;
     }
 
-    .showcase-item span{
-      display:block;
-      color:rgba(255,255,255,.72);
+    .audit-list{
+      display:grid;
+      gap:12px;
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+
+    .audit-list li{
+      padding-left:18px;
+      position:relative;
+      color:var(--muted-2);
       font-size:14px;
-      line-height:1.45;
+      line-height:1.5;
+    }
+
+    .audit-list li::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:.6em;
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:#fff;
+      opacity:.9;
+    }
+
+    .showcase-cta{
+      margin-top:20px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
     }
 
     .section{
@@ -301,16 +360,17 @@
 
     .section-head h2{
       margin:0 0 14px;
-      font-size:clamp(34px, 5vw, 56px);
+      font-size:clamp(34px, 5vw, 58px);
       line-height:1.02;
       letter-spacing:-.045em;
+      color:var(--white);
     }
 
     .section-head p{
       margin:0;
-      color:var(--muted);
+      color:var(--muted-2);
       font-size:18px;
-      line-height:1.55;
+      line-height:1.6;
     }
 
     .services-grid{
@@ -320,11 +380,12 @@
     }
 
     .card{
-      background:var(--surface);
-      border:1px solid rgba(17,17,17,.06);
-      border-radius:24px;
+      border-radius:28px;
       padding:28px;
-      box-shadow:0 8px 24px rgba(0,0,0,.03);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 12px 30px rgba(0,0,0,.18);
     }
 
     .card-index{
@@ -334,24 +395,25 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      background:#111;
-      color:#fff;
+      background:#fff;
+      color:#101010;
       font-size:14px;
       font-weight:700;
       margin-bottom:18px;
     }
 
     .card h3{
-      margin:0 0 10px;
+      margin:0 0 12px;
       font-size:24px;
       letter-spacing:-.03em;
+      color:var(--white);
     }
 
     .card p{
       margin:0;
       color:var(--muted);
       font-size:15px;
-      line-height:1.6;
+      line-height:1.65;
     }
 
     .about-grid{
@@ -361,32 +423,27 @@
     }
 
     .about-box{
-      background:var(--surface);
-      border:1px solid rgba(17,17,17,.06);
-      border-radius:28px;
+      border-radius:30px;
       padding:34px;
-    }
-
-    .about-box.large{
-      min-height:320px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
     }
 
     .about-box p{
       margin:0;
+      color:var(--muted-2);
       font-size:17px;
-      line-height:1.65;
-      color:var(--muted);
+      line-height:1.7;
     }
 
     .quote{
-      font-size:34px;
-      line-height:1.08;
-      letter-spacing:-.04em;
-      max-width:500px;
       margin:0 0 22px;
+      color:var(--white);
+      font-size:36px;
+      line-height:1.06;
+      letter-spacing:-.045em;
+      max-width:520px;
     }
 
     .split{
@@ -403,13 +460,15 @@
     .cta-box{
       border-radius:34px;
       padding:48px;
-      background:#111;
-      color:#fff;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03)),
+        #111214;
+      border:1px solid rgba(255,255,255,.08);
       display:grid;
-      grid-template-columns:1.15fr .85fr;
+      grid-template-columns:1.1fr .9fr;
       gap:24px;
       align-items:center;
-      box-shadow:0 18px 40px rgba(0,0,0,.14);
+      box-shadow:var(--shadow);
     }
 
     .cta-box h2{
@@ -417,14 +476,15 @@
       font-size:clamp(34px, 5vw, 58px);
       line-height:1;
       letter-spacing:-.045em;
+      color:var(--white);
     }
 
     .cta-box p{
       margin:0;
-      color:rgba(255,255,255,.72);
+      color:var(--muted-2);
       font-size:18px;
-      line-height:1.6;
-      max-width:620px;
+      line-height:1.65;
+      max-width:640px;
     }
 
     .cta-actions{
@@ -434,18 +494,9 @@
       flex-wrap:wrap;
     }
 
-    .cta .btn-secondary{
-      color:#fff;
-      border-color:rgba(255,255,255,.16);
-    }
-
-    .cta .btn-secondary:hover{
-      background:rgba(255,255,255,.08);
-    }
-
     .footer{
       padding:28px 0 46px;
-      border-top:1px solid rgba(17,17,17,.06);
+      border-top:1px solid rgba(255,255,255,.06);
       color:var(--muted);
       font-size:14px;
     }
@@ -464,7 +515,7 @@
       flex-wrap:wrap;
     }
 
-    .footer-links a:hover{color:var(--text)}
+    .footer-links a:hover{color:var(--white)}
 
     @media (max-width: 1080px){
       .hero-grid,
@@ -477,7 +528,7 @@
 
       .hero-right{
         border-left:0;
-        border-top:1px solid rgba(17,17,17,.06);
+        border-top:1px solid rgba(255,255,255,.06);
       }
 
       .cta-actions{
@@ -496,6 +547,7 @@
 
       .hero-left,
       .hero-right,
+      .showcase,
       .card,
       .about-box,
       .cta-box{
@@ -503,7 +555,7 @@
       }
 
       .hero{
-        padding-top:28px;
+        padding-top:22px;
       }
 
       .hero-copy{
@@ -519,6 +571,7 @@
       }
 
       .hero-actions,
+      .showcase-cta,
       .cta-actions{
         flex-direction:column;
       }
@@ -547,35 +600,41 @@
         <div class="hero-grid">
           <div class="hero-left">
             <div>
-              <div class="eyebrow">Consultoría en marketing e inteligencia artificial</div>
+              <div class="eyebrow">Marketing, IA y estructura de crecimiento</div>
               <h1>Impulso negocios con estrategia, sistemas y ejecución inteligente.</h1>
               <p class="hero-copy">
-                Ayudo a empresas y profesionales a mejorar su posicionamiento, optimizar procesos
-                y aplicar inteligencia artificial con un enfoque serio, práctico y orientado a negocio.
+                Ayudo a empresas y profesionales a identificar su principal cuello de botella,
+                optimizar procesos y aplicar inteligencia artificial con un enfoque práctico,
+                personalizado y orientado a resultados reales.
               </p>
 
               <div class="hero-actions">
-                <a class="btn btn-primary" href="https://www.linkedin.com/in/fernando-cevallos-vega-38296419a/" target="_blank" rel="noopener noreferrer">
+                <a class="btn btn-primary" href="https://calendly.com/racksacademyf/racks-academy-" target="_blank" rel="noopener noreferrer">
+                  Agendar reunión
+                </a>
+                <a class="btn btn-secondary" href="https://www.linkedin.com/in/fernando-cevallos-vega-38296419a/" target="_blank" rel="noopener noreferrer">
                   Contactar por LinkedIn
                 </a>
-                <a class="btn btn-secondary" href="#servicios">
-                  Ver servicios
-                </a>
+              </div>
+
+              <div class="hero-subnote">
+                Reunión personalizada para analizar tu situación actual, detectar bloqueos y explorar
+                cómo aplicar consultoría estratégica y sistemas internos a tu proyecto.
               </div>
             </div>
 
             <div class="hero-bottom">
-              <div class="mini-stat">
-                <strong>Estrategia clara</strong>
-                <span>Mensajes, enfoque y dirección para crecer con más coherencia.</span>
+              <div class="mini-card">
+                <strong>Diagnóstico estratégico</strong>
+                <span>Analizamos tu situación actual y detectamos el principal cuello de botella.</span>
               </div>
-              <div class="mini-stat">
-                <strong>Automatización útil</strong>
-                <span>Menos fricción operativa y más tiempo para lo importante.</span>
+              <div class="mini-card">
+                <strong>Auditoría personalizada</strong>
+                <span>Recibes una visión más clara sobre oportunidades, estructura y mejora.</span>
               </div>
-              <div class="mini-stat">
-                <strong>Visión de negocio</strong>
-                <span>La tecnología solo tiene sentido cuando genera impacto real.</span>
+              <div class="mini-card">
+                <strong>Consultoría aplicada</strong>
+                <span>Valoramos cómo pueden encajar tu proyecto y nuestros sistemas internos.</span>
               </div>
             </div>
           </div>
@@ -585,25 +644,41 @@
               <div>
                 <div class="showcase-top">
                   <div>
-                    <div class="showcase-label">SyonCo</div>
-                    <h2>Marketing, inteligencia artificial y estructura de crecimiento.</h2>
+                    <div class="showcase-label">Reunión estratégica</div>
+                    <h2>Una llamada enfocada en claridad, auditoría y dirección.</h2>
                   </div>
-                  <div class="badge">Consultoría</div>
+                  <div class="badge">SyonCo</div>
                 </div>
 
-                <div class="showcase-list">
-                  <div class="showcase-item">
-                    <strong>Captación y posicionamiento</strong>
-                    <span>Definición de propuesta, comunicación y enfoque comercial más sólido.</span>
+                <div class="audit-box">
+                  <h3>Qué puedes obtener en esta reunión</h3>
+                  <ul class="audit-list">
+                    <li>Análisis de tu situación actual para entender qué está frenando tu crecimiento.</li>
+                    <li>Identificación del principal cuello de botella de tu negocio o proyecto.</li>
+                    <li>Recomendaciones iniciales y enfoque estratégico personalizado.</li>
+                    <li>Valoración de cómo podría ayudarte nuestra consultoría y nuestros sistemas internos.</li>
+                  </ul>
+
+                  <div class="showcase-cta">
+                    <a class="btn btn-primary" href="https://calendly.com/racksacademyf/racks-academy-" target="_blank" rel="noopener noreferrer">
+                      Reservar llamada
+                    </a>
                   </div>
-                  <div class="showcase-item">
-                    <strong>Procesos y automatización</strong>
-                    <span>Diseño de sistemas para ahorrar tiempo, ordenar operaciones y escalar mejor.</span>
-                  </div>
-                  <div class="showcase-item">
-                    <strong>IA aplicada con criterio</strong>
-                    <span>Implementación realista, útil y alineada con objetivos concretos de negocio.</span>
-                  </div>
+                </div>
+              </div>
+
+              <div class="showcase-list" style="margin-top:18px;">
+                <div class="showcase-item">
+                  <strong>Marketing y posicionamiento</strong>
+                  <span>Más claridad en mensaje, oferta y dirección comercial.</span>
+                </div>
+                <div class="showcase-item">
+                  <strong>Procesos y sistemas</strong>
+                  <span>Ordenar para crecer mejor y con menos fricción operativa.</span>
+                </div>
+                <div class="showcase-item">
+                  <strong>IA con sentido de negocio</strong>
+                  <span>No solo herramientas: implementación con lógica y utilidad real.</span>
                 </div>
               </div>
             </div>
@@ -616,10 +691,10 @@
       <div class="container">
         <div class="section-head">
           <div class="section-kicker">Servicios</div>
-          <h2>Una consultoría diseñada para aportar claridad, eficiencia y crecimiento.</h2>
+          <h2>Consultoría diseñada para aportar claridad, eficiencia y crecimiento.</h2>
           <p>
-            Trabajo sobre lo que realmente mueve un negocio: estrategia, procesos, posicionamiento
-            y oportunidades reales de mejora apoyadas en marketing e inteligencia artificial.
+            Trabajo sobre posicionamiento, marketing, procesos y oportunidades concretas de mejora
+            para ayudarte a construir una estructura de negocio más sólida y escalable.
           </p>
         </div>
 
@@ -628,8 +703,8 @@
             <div class="card-index">01</div>
             <h3>Estrategia de marketing</h3>
             <p>
-              Estructuro mensajes, propuesta de valor y presencia digital para comunicar mejor,
-              atraer mejores oportunidades y convertir con mayor claridad.
+              Estructuro mensajes, propuesta de valor y enfoque comercial para que tu negocio
+              comunique mejor, atraiga mejores oportunidades y convierta con más claridad.
             </p>
           </article>
 
@@ -637,8 +712,8 @@
             <div class="card-index">02</div>
             <h3>Automatización con IA</h3>
             <p>
-              Detecto procesos repetitivos y planteo sistemas que reduzcan tiempo operativo,
-              mejoren la eficiencia y eleven la calidad de ejecución.
+              Detecto tareas repetitivas y planteo sistemas que reduzcan tiempo operativo,
+              mejoren la eficiencia y te permitan enfocarte en lo que realmente genera valor.
             </p>
           </article>
 
@@ -646,8 +721,8 @@
             <div class="card-index">03</div>
             <h3>Optimización y escalado</h3>
             <p>
-              Analizo puntos de fricción, estructura y oportunidades de mejora para ayudarte
-              a crecer sobre una base más sólida, ordenada y preparada para escalar.
+              Analizo estructura, procesos y fricciones para ayudarte a crecer con una base
+              más ordenada, más rentable y mejor preparada para escalar.
             </p>
           </article>
         </div>
@@ -658,40 +733,35 @@
       <div class="container">
         <div class="section-head">
           <div class="section-kicker">Sobre mí</div>
-          <h2>Una visión práctica para integrar marketing e IA en negocio real.</h2>
+          <h2>Marketing e inteligencia artificial aplicados a negocio real.</h2>
         </div>
 
         <div class="about-grid">
-          <div class="about-box large">
+          <div class="about-box">
             <p class="quote">
-              No se trata solo de usar inteligencia artificial. Se trata de aplicarla con criterio.
+              No se trata solo de usar IA. Se trata de aplicarla con criterio.
             </p>
             <p>
-              Soy Fernando Cevallos y trabajo en la intersección entre estrategia, marketing e
-              inteligencia artificial. Mi enfoque está orientado a ayudar a empresas y profesionales
-              a identificar oportunidades, simplificar procesos y construir sistemas útiles que
-              generen resultados.
+              Soy Fernando Cevallos y trabajo en la intersección entre estrategia, marketing
+              e inteligencia artificial. Mi enfoque está orientado a ayudar a empresas y
+              profesionales a detectar bloqueos, ordenar su estructura y construir sistemas útiles.
             </p>
           </div>
 
           <div>
             <div class="about-box">
               <p>
-                La tecnología por sí sola no resuelve nada. Aporta valor cuando está alineada con
-                una estrategia clara, una ejecución consistente y un objetivo de negocio concreto.
+                La tecnología aporta valor cuando está alineada con un objetivo claro,
+                una ejecución sólida y una visión de negocio realista.
               </p>
             </div>
 
             <div class="split">
               <div class="about-box">
-                <p>
-                  Enfoque consultivo, sobrio y orientado a decisiones útiles.
-                </p>
+                <p>Enfoque sobrio, estratégico y orientado a decisiones útiles.</p>
               </div>
               <div class="about-box">
-                <p>
-                  Soluciones pensadas para negocio real, no para apariencia.
-                </p>
+                <p>Soluciones pensadas para negocio real, no solo para apariencia.</p>
               </div>
             </div>
           </div>
@@ -703,19 +773,19 @@
       <div class="container">
         <div class="cta-box">
           <div>
-            <h2>¿Hablamos?</h2>
+            <h2>¿Quieres que analicemos tu situación?</h2>
             <p>
-              Si quieres explorar cómo aplicar marketing e inteligencia artificial en tu negocio
-              de una forma seria, útil y profesional, podemos conectar.
+              Agenda tu consultoría para revisar tu situación actual, identificar tu principal cuello
+              de botella y recibir una auditoría estratégica personalizada sobre tu proyecto.
             </p>
           </div>
 
           <div class="cta-actions">
-            <a class="btn btn-primary" href="https://www.linkedin.com/in/fernando-cevallos-vega-38296419a/" target="_blank" rel="noopener noreferrer">
-              Ir a LinkedIn
+            <a class="btn btn-primary" href="https://calendly.com/racksacademyf/racks-academy-" target="_blank" rel="noopener noreferrer">
+              Quiero mi consultoría
             </a>
-            <a class="btn btn-secondary" href="#top">
-              Volver arriba
+            <a class="btn btn-secondary" href="https://www.linkedin.com/in/fernando-cevallos-vega-38296419a/" target="_blank" rel="noopener noreferrer">
+              LinkedIn
             </a>
           </div>
         </div>
