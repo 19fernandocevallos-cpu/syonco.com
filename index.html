@@ -6,19 +6,49 @@
 <title>MLN LLC | Consultoría de marketing, ventas y operaciones</title>
 <meta name="description" content="MLN LLC ayuda a empresas a captar clientes, organizar equipos comerciales y automatizar tareas operativas.">
 <style>
-*{box-sizing:border-box}body{margin:0;background:#faf9f6;color:#202020;font:17px/1.6 system-ui,sans-serif}a{color:inherit}a:focus-visible{outline:3px solid #555555;outline-offset:4px}.wrap{width:min(1100px,calc(100% - 40px));margin:auto}header{border-bottom:1px solid #dedbd5}header .wrap,footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding:20px 0}nav{display:flex;gap:20px;flex-wrap:wrap}.brand{font-weight:800;letter-spacing:.06em;text-decoration:none}.hero{padding:clamp(64px,11vw,145px) 0;background:#eeece7;color:#161616}.hero p{max-width:580px;color:#424242}.hero h1{font-size:clamp(2.8rem,8vw,6rem);letter-spacing:-.065em;line-height:1.02;max-width:840px;margin:12px 0 25px}.button{display:inline-block;margin-top:16px;background:#202020;color:#ffffff;padding:12px 20px;border-radius:8px;font-weight:750;text-decoration:none}section{padding:64px 0}h2{font-size:clamp(1.9rem,5vw,3rem);line-height:1.1;margin:0 0 20px}h3{line-height:1.2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px}.grid article{background:white;border:1px solid #dedbd5;border-radius:12px;padding:24px}.grid h3{margin-top:0}.grid p{margin-bottom:0}.about{background:#f1efea}.about p,#contacto p{max-width:680px}footer{border-top:1px solid #dedbd5;font-size:.9rem}
-.brand img{display:block;width:120px;height:60px;object-fit:contain}
+:root{color-scheme:light;--paper:#f7f5ef;--ink:#242720;--muted:#54594e;--line:#d9dacf;--dark:#292e25}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:1rem/1.65 "Inter",system-ui,sans-serif}
+a{color:inherit;text-underline-offset:.22em}
+a:focus-visible{outline:2px solid currentColor;outline-offset:5px}
+.wrap{width:min(1120px,calc(100% - 40px));margin-inline:auto}
+header,footer{border-block-end:1px solid var(--line)}
+header .wrap,footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;padding-block:14px}
+.brand,nav{display:flex;align-items:center;gap:20px}
+.brand{gap:8px;font-weight:700;text-decoration:none}
+.brand img{display:block;width:76px;height:38px;object-fit:contain}
+nav a{font-size:.9rem;text-decoration:none}
+nav a:hover{text-decoration:underline}
+section{padding-block:clamp(42px,7vw,82px)}
+.hero{background:#eeece2}
+.hero p{max-width:570px;color:var(--muted);font-size:1.12rem}
+h1,h2,h3,p{margin:0}
+h1,h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;line-height:1.04}
+h1{font-size:clamp(2.65rem,7vw,5.35rem);max-width:850px;letter-spacing:-.035em}
+h2{font-size:clamp(2.1rem,4vw,3.35rem)}
+h3{line-height:1.25;font-size:1.12rem}
+p{margin-top:14px}
+.button{display:inline-block;margin-top:24px;padding:10px 18px;border:1px solid var(--dark);border-radius:4px;background:var(--dark);color:white;font-weight:650;text-decoration:none}
+.button:hover{background:#41483a}
+.about{background:var(--dark);color:var(--paper)}
+.about h2{font:650 .94rem/1.4 system-ui,sans-serif}
+.about h3{font:400 clamp(2rem,5vw,4rem)/1.08 "Instrument Serif",Georgia,serif;margin-top:15px;max-width:780px}
+.about p{color:#dcdfd3;max-width:700px}
+.grid{margin-top:24px;border-top:1px solid var(--line)}
+.grid article{display:grid;grid-template-columns:minmax(170px,1fr) 2fr;gap:20px;border-bottom:1px solid var(--line);padding:22px 0}
+.grid p{margin:0;color:var(--muted)}
+#contacto{background:#eeece2}
+#contacto a:not(.button){display:inline-block;margin-top:10px}
+footer{border-block:1px solid var(--line);font-size:.875rem;color:var(--muted)}
+@media(max-width:560px){.grid article{grid-template-columns:1fr;gap:8px}nav{gap:14px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body id="inicio">
-<header><div class="wrap"><a class="brand" href="#inicio"><img src="MLN.png" alt="MLN LLC" width="120" height="60"></a><nav aria-label="Navegación principal"><a href="#servicios">Servicios</a><a href="#equipo">Experiencia</a><a href="#contacto">Contacto</a></nav></div></header>
+<header><div class="wrap"><a class="brand" href="#inicio"><img src="MLN.png" alt="" width="76" height="38">MLN LLC</a><nav aria-label="Navegación principal"><a href="#equipo">Experiencia</a><a href="#servicios">Servicios</a><a href="#contacto">Contacto</a></nav></div></header>
 <main>
 <section class="hero"><div class="wrap"><h1>Consultoría de marketing, ventas y operaciones</h1><p>Ayudamos a empresas a captar clientes, organizar sus equipos de ventas y simplificar las operaciones que sostienen su actividad comercial.</p><a class="button" href="#contacto">Contactar con MLN LLC</a></div></section>
-<section id="servicios"><div class="wrap"><h2>Servicios</h2><div class="grid">
-<article><h3>Oferta y captación</h3><p>Revisamos tu oferta y tu proceso de venta. A partir de ese análisis, definimos un plan para llegar a nuevos clientes y convertir en compradores a personas que ya siguen tu negocio.</p></article>
-<article><h3>Equipos comerciales</h3><p>Ayudamos a montar y organizar equipos de ventas, definir las responsabilidades de cada puesto y establecer cómo se gestiona el proceso comercial.</p></article>
-<article><h3>Gestión y automatización</h3><p>Coordinamos la ejecución de los proyectos y revisamos qué tareas se pueden automatizar para reducir el trabajo manual.</p></article>
-</div></div></section>
 <section class="about" id="equipo">
 <div class="wrap">
 <h2>Experiencia del equipo</h2>
@@ -27,7 +57,12 @@
 <p>Hemos trabajado con academias de inteligencia artificial, negocios de inversiones, crecimiento personal y fitness, y marcas personales con presencia en redes sociales.</p>
 </div>
 </section>
-<section id="contacto"><div class="wrap"><h2>Contacto</h2><p>Cuéntanos qué necesitas mejorar en tu negocio y en qué punto estás.</p><p><a href="mailto:mln@syonco.com">mln@syonco.com</a><br>
+<section id="servicios"><div class="wrap"><h2>Servicios</h2><div class="grid">
+<article><h3>Oferta y captación</h3><p>Revisamos tu oferta y tu proceso de venta. A partir de ese análisis, definimos un plan para llegar a nuevos clientes y convertir en compradores a personas que ya siguen tu negocio.</p></article>
+<article><h3>Equipos comerciales</h3><p>Ayudamos a montar y organizar equipos de ventas, definir las responsabilidades de cada puesto y establecer cómo se gestiona el proceso comercial.</p></article>
+<article><h3>Gestión y automatización</h3><p>Coordinamos la ejecución de los proyectos y revisamos qué tareas se pueden automatizar para reducir el trabajo manual.</p></article>
+</div></div></section>
+<section id="contacto"><div class="wrap"><h2>Contacto</h2><p>Cuéntanos qué necesitas mejorar en tu negocio y en qué punto estás.</p><p><a class="button" href="mailto:mln@syonco.com">mln@syonco.com</a><br>
 <a href="mailto:contact@syonco.com">contact@syonco.com</a></p></div></section>
 </main>
 <footer><div class="wrap"><span>© 2026 MLN LLC</span><span>Sitio web operado por MLN LLC</span></div></footer>
